@@ -34,108 +34,109 @@ Edit
 
 1. **Clone the repository:**
 
-```bash
 git clone https://github.com/your-username/expense-management-system.git
 cd expense-management-system
-Run the main program:
 
-bash
+markdown
 Copy
 Edit
+
+2. **Run the main program:**
+
 python expenses.py
-Run the tests:
 
-bash
+markdown
 Copy
 Edit
+
+3. **Run the tests:**
+
 python -m unittest expenses_test.py
-Input File Format (expenses.txt, expenses_2.txt)
+
+less
+Copy
+Edit
+
+## Input File Format (`expenses.txt`, `expenses_2.txt`)
+
 Each line in the input files should be formatted as:
+
+expense_type: amount
 
 makefile
 Copy
 Edit
-expense_type: amount
+
 Example:
 
-yaml
-Copy
-Edit
 coffee: 3.50
 rent: 1000.00
 entertainment: 55.25
-Lines without a colon or a numeric amount are ignored
 
-Blank lines are skipped
-
-Whitespace is stripped from both sides
-
-Expense types are case-sensitive (Coffee and coffee are different)
-
-Duplicate types in the same file are combined
-
-Testing
-Run expenses_test.py using Python's unittest framework:
-
-bash
+sql
 Copy
 Edit
+
+- Lines without a colon or a numeric amount are ignored
+- Blank lines are skipped
+- Whitespace is stripped from both sides
+- Expense types are case-sensitive (`Coffee` and `coffee` are different)
+- Duplicate types in the same file are combined
+
+## Testing
+
+Run `expenses_test.py` using Python's unittest framework:
+
 python -m unittest expenses_test.py
-You are encouraged to add distinct test cases to ensure full coverage. Provided tests check:
 
-Expense importing
+markdown
+Copy
+Edit
 
-Adding, deducting, and updating expenses
+Tests include:
 
-Sorting behavior
+- Expense importing
+- Adding, deducting, and updating expenses
+- Sorting behavior
+- Exporting filtered expenses
+- Exception handling
 
-Exporting filtered expenses
+## Implementation Notes
 
-Proper exception handling and messages
+- Do **not** modify `expenses.py`; it is the program's entry point
+- Implement required logic in:
+  - `ExpensesLoader.py`
+  - `ExpensesManager.py`
+  - `Expense.py`
+- Keep method names and signatures as specified
+- Remove all `raise NotImplementedError` once implemented
+- Add meaningful docstrings and comments for helper methods
 
-Implementation Notes
-Do not modify expenses.py; this is the main program entrypoint used by the autograder
+## Example Behavior
 
-Implement all specified methods in:
-
-ExpensesLoader.py
-
-ExpensesManager.py
-
-Expense.py
-
-All methods must match their given names and signatures exactly
-
-Remove all raise NotImplementedError lines after implementing the methods
-
-Add meaningful comments and docstrings for all helper methods you create
-
-Example Behavior
-Add to an existing expense:
+**Add to an existing expense:**
 
 Input: coffee, 1.32
-
 Output: coffee: 13.72
 
-Deduct from an expense:
-
-If value exceeds the current amount, raise RuntimeError
-
-Export to file:
-
-Only exports matching expense types; overwrites the file if it exists
-
-Submission Checklist
-Your repository should include:
-
-expenses.py (unchanged)
-
-ExpensesLoader.py, ExpensesManager.py, and Expense.py (fully implemented)
-
-expenses_test.py (with your additional tests)
-
-expenses.txt and expenses_2.txt (unchanged)
-
-vbnet
+markdown
 Copy
 Edit
+
+**Deduct from an expense:**
+
+- If the value to deduct exceeds the current amount, raise `RuntimeError`
+
+**Export to file:**
+
+- Only selected expense types are exported
+- File is overwritten if it already exists
+
+## Submission Checklist
+
+Ensure your repo includes:
+
+- `expenses.py` (unchanged)
+- `ExpensesLoader.py`, `ExpensesManager.py`, `Expense.py` (fully implemented)
+- `expenses_test.py` (with your tests)
+- `expenses.txt`, `expenses_2.txt` (unchanged)
